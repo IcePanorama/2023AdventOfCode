@@ -10,7 +10,7 @@ main (int argc, char** argv)
 {
   if (argc < 2)
   {
-    puts("Error! Improper usage. Run this program by writting: ./main [some_input].txt");
+    puts("Error! Improper usage. Run this program by writing: ./main [some_input].txt");
     exit(EXIT_FAILURE);
   }
 
@@ -23,8 +23,6 @@ main (int argc, char** argv)
   int sum = 0;
   while(fgets(line, MAX_LINE_LEN, file) != NULL)
   {
-    printf("%s", line);
-
     size_t line_len = strlen(line);
 
     size_t start = 0;
@@ -40,12 +38,9 @@ main (int argc, char** argv)
       end--;
     }
 
-    printf("first num: %c - %d\n", line[start], char_to_int(line[start]));
-    //sum += char_to_int(line[start]);
-    printf("last num: %c - %d\n", line[end], char_to_int(line[end]));
     char new_num[] = { line[start], line[end], '\0'};
-    printf("New num: %s\n", new_num);
-    sum += atoi(new_num);//char_to_int(line[end]);
+
+    sum += atoi(new_num);
   }
 
   printf("%d\n", sum);
