@@ -20,6 +20,7 @@ main (int argc, char **argv)
   char line[MAX_LINE_LEN];
 
   int total = 0;
+  int cube_total = 0;
   while(fgets(line, MAX_LINE_LEN, file) != NULL)
   {
     if (line[0] == '\n')
@@ -30,6 +31,10 @@ main (int argc, char **argv)
     int red = 12;
     int green = 13;
     int blue = 14;
+
+    int min_red = -1;
+    int min_green = -1;
+    int min_blue = -1;
 
     char *game = strtok(line, ":");
 
@@ -45,6 +50,10 @@ main (int argc, char **argv)
       if (strncmp(color, "red", 3) == 0)
       {
         red -= cnt;
+        if (cnt > min_red)
+        {
+          min_red = cnt;
+        }
         if (red < 0)
         {
           is_impossible = true;
@@ -53,6 +62,10 @@ main (int argc, char **argv)
       else if (strncmp(color, "green", 5) == 0)
       {
         green -= cnt;
+        if (cnt > min_green)
+        {
+          min_green = cnt;
+        }
         if (green < 0)
         {
           is_impossible = true;
@@ -61,6 +74,10 @@ main (int argc, char **argv)
       else if (strncmp(color, "blue", 4) == 0)
       {
         blue -= cnt;
+        if (cnt > min_blue)
+        {
+          min_blue = cnt;
+        }
         if (blue < 0)
         {
           is_impossible = true;
@@ -87,9 +104,11 @@ main (int argc, char **argv)
     {
       total += game_id;
     }
+    cube_total += (min_red * min_green * min_blue);
   }
 
   printf("Total: %d\n", total);
+  printf("Cube total: %d\n", cube_total);
 
   fclose(file);
 
