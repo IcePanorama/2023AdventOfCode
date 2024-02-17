@@ -55,7 +55,8 @@ main (int argc, char **argv)
 
       int num = atoi(num_str);
 
-      if (is_valid(input, num_rows, line_width, i, start - 1) || is_valid(input, num_rows, line_width, i, j))
+      if (is_valid(input, num_rows, line_width, i, start - 1) || 
+          is_valid(input, num_rows, line_width, i, j))
       {
         ans += num;
         continue;
@@ -63,7 +64,8 @@ main (int argc, char **argv)
 
       for (int k = start - 1; k < (j + 1); k++)
       {
-        if (is_valid(input, num_rows, line_width, i - 1, k) || is_valid(input, num_rows, line_width, i + 1, k))
+        if (is_valid(input, num_rows, line_width, i - 1, k) || 
+            is_valid(input, num_rows, line_width, i + 1, k))
         {
           ans += num;
           break;
